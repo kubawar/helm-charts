@@ -3,9 +3,9 @@
 
 replicaCount: 1
 image:
-  repository: docker pull ghcr.io/paperclipai/paperclip
+  repository: ghcr.io/paperclipai/paperclip
   # -- Overrides the image tag whose default is the chart appVersion
-  tag: "latest"
+  tag: "2026.1023"
   pullPolicy: IfNotPresent
 
 server:
