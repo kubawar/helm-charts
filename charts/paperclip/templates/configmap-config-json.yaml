@@ -10,7 +10,7 @@ data:
       "$meta": {
         "version": 1,
         "updatedAt": "{{ now | date "2006-01-02T15:04:05Z07:00" }}",
-        "source": "helm"
+        "source": "configure"        
       },
       "database": {
         "mode": "postgres",
