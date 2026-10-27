@@ -24,7 +24,26 @@ ingress:
           pathType: Prefix
 
 postgresql:
-  enabled: false
+  # -- Enable bundled PostgreSQL subchart (for dev/staging)
+  enabled: true
+  auth:
+    username: paperclip
+    database: paperclip
+    existingSecret: "better-auth-secret"
+  primary:
+    persistence:
+      enabled: true
+      size: 20Gi
+      storageClass: "nfs-client"
+    resources:
+      requests:
+        cpu: 250m
+        memory: 512Mi
+      limits:
+        cpu: "1"
+        memory: 1Gi
+  metrics:
+    enabled: true
 
 persistence:
   enabled: true
