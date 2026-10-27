@@ -6,29 +6,17 @@ replicaCount: 1
 server:
   deploymentMode: "authenticated"
   deploymentExposure: "private"
-  publicUrl: "https://paperclip.example.com"
+  publicUrl: "https://paperclip.wojna-z-it.pl"
   authDisableSignUp: true
   companyDeletionEnabled: false
 
 ingress:
   enabled: true
-  className: "nginx"
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      proxy_set_header Upgrade $http_upgrade;
-      proxy_set_header Connection "upgrade";
   hosts:
-    - host: paperclip.example.com
+    - host: paperclip.wojna-z-it.pl
       paths:
         - path: /
           pathType: Prefix
-  tls:
-    - secretName: paperclip-tls
-      hosts:
-        - paperclip.example.com
 
 postgresql:
   enabled: false
@@ -41,40 +29,19 @@ postgresql:
     sslMode: "require"
     connectionPooling: false
 
-storage:
-  provider: "s3"
-  s3:
-    bucket: "paperclip-assets"
-    region: "eu-west-2"
-
-secrets:
-  existingBetterAuthSecret: "paperclip-auth-secret"
-  existingMasterKeySecret: "paperclip-master-key"
-  existingApiKeysSecret: "paperclip-api-keys"
-
-serviceAccount:
-  create: true
-  annotations:
-    eks.amazonaws.com/role-arn: "arn:aws:iam::ACCOUNT:role/paperclip-s3"
-
 persistence:
   enabled: true
   size: 50Gi
-  storageClass: "gp3"
+  storageClass: "nfs-client"
 
 backup:
   builtin:
     enabled: true
     intervalMinutes: 30
     retentionDays: 30
-  external:
-    enabled: true
-    schedule: "0 */6 * * *"
-    s3Bucket: "paperclip-db-backups"
-    s3Region: "eu-west-2"
-
+  
 networkPolicy:
-  enabled: true
+  enabled: false
 
 podDisruptionBudget:
   enabled: true
