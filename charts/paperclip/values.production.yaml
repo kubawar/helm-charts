@@ -2,6 +2,11 @@
 # Usage: helm upgrade paperclip ./paperclip -f values.production.yaml
 
 replicaCount: 1
+image:
+  repository: docker pull ghcr.io/paperclipai/paperclip
+  # -- Overrides the image tag whose default is the chart appVersion
+  tag: "2026.1023"
+  pullPolicy: IfNotPresent
 
 server:
   deploymentMode: "authenticated"
@@ -20,14 +25,6 @@ ingress:
 
 postgresql:
   enabled: false
-  external:
-    host: "paperclip-db.abc123.eu-west-2.rds.amazonaws.com"
-    port: 5432
-    database: "paperclip"
-    username: "paperclip"
-    existingSecret: "paperclip-db-credentials"
-    sslMode: "require"
-    connectionPooling: false
 
 persistence:
   enabled: true
