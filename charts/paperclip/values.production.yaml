@@ -14,6 +14,12 @@ server:
   publicUrl: "https://paperclip.wojna-z-it.pl"
   authDisableSignUp: true
   companyDeletionEnabled: false
+  
+service:
+  type: ClusterIP
+  port: 80
+  containerPort: 3100
+  annotations: {}
 
 ingress:
   enabled: true
