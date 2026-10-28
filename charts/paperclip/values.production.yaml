@@ -29,7 +29,7 @@ postgresql:
   auth:
     username: paperclip
     database: paperclip
-    existingSecret: "better-auth-secret"
+    existingSecret: "paperclip-db-credentials"
   primary:
     persistence:
       enabled: true
