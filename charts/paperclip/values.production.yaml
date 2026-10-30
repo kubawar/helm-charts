@@ -51,6 +51,15 @@ postgresql:
   metrics:
     enabled: true
 
+storage:
+  # -- Storage provider: "s3" or "local_disk"
+  provider: "local_disk"
+  localDisk:
+    persistence:
+      enabled: true
+      size: 10Gi
+      storageClass: "nfs-client"
+
 persistence:
   enabled: true
   size: 50Gi
