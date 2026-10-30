@@ -2,7 +2,7 @@ apiVersion: v2
 name: paperclip
 description: A Helm chart for Paperclip — AI agent orchestration platform
 type: application
-version: 0.1.2
+version: 0.1.3
 appVersion: "2026.1023"
 home: https://github.com/paperclipai/paperclip
 sources:
