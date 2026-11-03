@@ -107,17 +107,17 @@ spec:
             {{- end }}
           startupProbe:            
             tcpSocket:
-              port: 3100
+              port: {{ .Values.service.containerPort }}
             initialDelaySeconds: 15
             periodSeconds: 10
           livenessProbe:
             tcpSocket:
-              port: 3100
+              port: {{ .Values.service.containerPort }}
             initialDelaySeconds: 15
             periodSeconds: 10
           readinessProbe:
             tcpSocket:
-              port: 3100
+              port: {{ .Values.service.containerPort }}
             initialDelaySeconds: 20
             periodSeconds: 10
           lifecycle:
